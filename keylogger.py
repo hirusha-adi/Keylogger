@@ -60,6 +60,9 @@ class Toplevel1:
         self.top = top
         self.selected_ReportMode = tk.IntVar()
         self.selected_SaveFileFormat = tk.IntVar()
+        
+        self.selected_ReportMode.set(1)
+        self.selected_SaveFileFormat.set(1)
 
         self.config_MenuBar() # menu bar
         self.config_Topic() # topic
