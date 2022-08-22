@@ -60,34 +60,7 @@ class Toplevel1:
         self.top = top
         self.selectedButton = tk.IntVar()
 
-        self.menubar = tk.Menu(top,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
-        top.configure(menu = self.menubar)
-
-        self.sub_menu = tk.Menu(top, activebackground='beige', activeborderwidth=1
-                ,activeforeground='black', background='#d9d9d9', borderwidth=1
-                ,disabledforeground='#a3a3a3', foreground='#000000', tearoff=0)
-        self.menubar.add_cascade(compound='left', label='Menu', menu=self.sub_menu
-                ,)
-        self.sub_menu.add_command(compound='left',label='Save')
-        self.sub_menu.add_command(compound='left',label='Build')
-        self.sub_menu1 = tk.Menu(top, activebackground='beige'
-                ,activeborderwidth=1, activeforeground='black'
-                ,background='#d9d9d9', borderwidth=1, disabledforeground='#a3a3a3'
-                ,foreground='#000000', tearoff=0)
-        self.menubar.add_cascade(compound='left', label='Actions'
-                ,menu=self.sub_menu1, )
-        self.sub_menu1.add_command(compound='left',label='Build')
-        self.sub_menu1.add_separator()
-        self.sub_menu1.add_command(compound='left',label='Reset')
-        self.sub_menu12 = tk.Menu(top, activebackground='beige'
-                ,activeborderwidth=1, activeforeground='black'
-                ,background='#d9d9d9', borderwidth=1, disabledforeground='#a3a3a3'
-                ,foreground='#000000', tearoff=0)
-        self.menubar.add_cascade(compound='left', label='Other'
-                ,menu=self.sub_menu12, )
-        self.sub_menu12.add_command(compound='left',label='Source Code')
-        self.sub_menu12.add_command(compound='left',label='About')
-        self.sub_menu12.add_command(compound='left',label='Help')
+        self.config_MenuBar()
 
         self.Frame1 = tk.Frame(self.top)
         self.Frame1.place(relx=0.015, rely=0.371, relheight=0.381
@@ -532,6 +505,36 @@ class Toplevel1:
         self.Label2_1.configure(highlightcolor="black")
         self.Label2_1.configure(text='''by @hirushaadi''')
 
+    def config_MenuBar(self):
+        self.menubar = tk.Menu(self.top,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
+        self.top.configure(menu = self.menubar)
+
+        self.sub_menu = tk.Menu(self.top, activebackground='beige', activeborderwidth=1
+                ,activeforeground='black', background='#d9d9d9', borderwidth=1
+                ,disabledforeground='#a3a3a3', foreground='#000000', tearoff=0)
+        self.menubar.add_cascade(compound='left', label='Menu', menu=self.sub_menu
+                ,)
+        self.sub_menu.add_command(compound='left',label='Save')
+        self.sub_menu.add_command(compound='left',label='Build')
+        self.sub_menu1 = tk.Menu(self.top, activebackground='beige'
+                ,activeborderwidth=1, activeforeground='black'
+                ,background='#d9d9d9', borderwidth=1, disabledforeground='#a3a3a3'
+                ,foreground='#000000', tearoff=0)
+        self.menubar.add_cascade(compound='left', label='Actions'
+                ,menu=self.sub_menu1, )
+        self.sub_menu1.add_command(compound='left',label='Build')
+        self.sub_menu1.add_separator()
+        self.sub_menu1.add_command(compound='left',label='Reset')
+        self.sub_menu12 = tk.Menu(self.top, activebackground='beige'
+                ,activeborderwidth=1, activeforeground='black'
+                ,background='#d9d9d9', borderwidth=1, disabledforeground='#a3a3a3'
+                ,foreground='#000000', tearoff=0)
+        self.menubar.add_cascade(compound='left', label='Other'
+                ,menu=self.sub_menu12, )
+        self.sub_menu12.add_command(compound='left',label='Source Code')
+        self.sub_menu12.add_command(compound='left',label='About')
+        self.sub_menu12.add_command(compound='left',label='Help') 
+    
 # The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
     '''Configure the scrollbars for a widget.'''
@@ -640,6 +643,7 @@ def _on_shiftmouse(event, widget):
             widget.xview_scroll(-1, 'units')
         elif event.num == 5:
             widget.xview_scroll(1, 'units')
+
 def start_up():
     keylogger_support.main()
 
