@@ -566,6 +566,7 @@ class Toplevel1:
         FromEmail = self.e_FromEmail.get()
         FromPassword = self.e_FromPassword.get()
         ToEmail = self.e_ToEmail.get()
+        return { 'FromEmail': FromEmail, 'FromPassword': FromPassword, 'ToEmail': ToEmail }
     
 # The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
