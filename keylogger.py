@@ -59,6 +59,7 @@ class Toplevel1:
 
         self.top = top
         self.selected_ReportMode = tk.IntVar()
+        self.selected_SaveFileFormat = tk.IntVar()
 
         self.config_MenuBar() # menu bar
         self.config_Topic() # topic
@@ -467,7 +468,8 @@ class Toplevel1:
         self.Radiobutton1_1_2.configure(justify='left')
         self.Radiobutton1_1_2.configure(selectcolor="#d9d9d9")
         self.Radiobutton1_1_2.configure(text='''TXT''')
-        self.Radiobutton1_1_2.configure(variable=self.selected_ReportMode)
+        self.Radiobutton1_1_2.configure(variable=self.selected_SaveFileFormat)
+        self.Radiobutton1_1_2.configure(value=1)
 
         self.Radiobutton1_1_2_1 = tk.Radiobutton(self.Frame1_1_1)
         self.Radiobutton1_1_2_1.place(relx=0.531, rely=0.798, relheight=0.124
@@ -484,7 +486,8 @@ class Toplevel1:
         self.Radiobutton1_1_2_1.configure(justify='left')
         self.Radiobutton1_1_2_1.configure(selectcolor="#d9d9d9")
         self.Radiobutton1_1_2_1.configure(text='''JSON''')
-        self.Radiobutton1_1_2_1.configure(variable=self.selected_ReportMode)
+        self.Radiobutton1_1_2_1.configure(variable=self.selected_SaveFileFormat)
+        self.Radiobutton1_1_2_1.configure(value=2)
 
     def config_Topic(self):
         self.Label2 = tk.Label(self.top)
