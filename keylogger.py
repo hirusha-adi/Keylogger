@@ -38,24 +38,17 @@ def _style_code():
     style.configure('.',background=_bgcolor)
     style.configure('.',foreground=_fgcolor)
     style.configure('.',font='TkDefaultFont')
-    style.map('.',background =
-       [('selected', _compcolor), ('active',_ana2color)])
+    style.map('.',background = [('selected', _compcolor), ('active',_ana2color)])
     if _bgmode == 'dark':
-       style.map('.',foreground =
-         [('selected', 'white'), ('active','white')])
+       style.map('.',foreground = [('selected', 'white'), ('active','white')])
     else:
-       style.map('.',foreground =
-         [('selected', 'black'), ('active','black')])
-    style.configure('Vertical.TScrollbar',  background=_bgcolor,
-        arrowcolor= _fgcolor)
-    style.configure('Horizontal.TScrollbar',  background=_bgcolor,
-        arrowcolor= _fgcolor)
+       style.map('.',foreground = [('selected', 'black'), ('active','black')])
+    style.configure('Vertical.TScrollbar',  background=_bgcolor, arrowcolor= _fgcolor)
+    style.configure('Horizontal.TScrollbar',  background=_bgcolor, arrowcolor= _fgcolor)
     _style_code_ran = 1
 
 class Toplevel1:
     def __init__(self, top=None):
-        '''This class configures and populates the toplevel window.
-           top is the toplevel containing window.'''
 
         top.geometry("672x507+583+374")
         top.minsize(120, 1)
