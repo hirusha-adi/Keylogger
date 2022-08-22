@@ -1,0 +1,4 @@
+
+*.pyc
+__pycache__/keylogger_support.cpython-310.pyc
+*.pyc
