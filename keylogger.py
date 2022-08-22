@@ -573,7 +573,13 @@ class Toplevel1:
         EndpointUrl = self.e_EndpointUrl.get()
         ExpectedResult = self.e_ExpectedResult.get()
         return { 'ParameterName': ParameterName, 'EndpointUrl': EndpointUrl, 'ExpectedResult': ExpectedResult }
-        
+    
+    def get_SaveFile(self):
+        BaseFilename = self.e_BaseFilename()
+        FileExtension = self.e_FileExtension.get()
+        SaveFileFormat = self.selected_SaveFileFormat.get()
+        return { 'BaseFilename': BaseFilename, 'FileExtension': FileExtension, 'SaveFileFormat': SaveFileFormat }
+
 # The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
     '''Configure the scrollbars for a widget.'''
