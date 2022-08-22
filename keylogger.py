@@ -107,16 +107,16 @@ class Toplevel1:
         self.sub_menu12.add_command(compound='left',label='Help') 
     
     def config_Frame(self):
-        self.Frame1 = tk.Frame(self.top)
-        self.Frame1.place(relx=0.015, rely=0.371, relheight=0.381
+        self.f_Main = tk.Frame(self.top)
+        self.f_Main.place(relx=0.015, rely=0.371, relheight=0.381
                 , relwidth=0.308)
-        self.Frame1.configure(relief='groove')
-        self.Frame1.configure(borderwidth="2")
-        self.Frame1.configure(relief="groove")
-        self.Frame1.configure(background="#1e1e1e")
+        self.f_Main.configure(relief='groove')
+        self.f_Main.configure(borderwidth="2")
+        self.f_Main.configure(relief="groove")
+        self.f_Main.configure(background="#1e1e1e")
     
     def config_Email(self):
-        self.Label1_1 = tk.Label(self.Frame1)
+        self.Label1_1 = tk.Label(self.f_Main)
         self.Label1_1.place(relx=0.048, rely=0.041, height=21, width=174)
         self.Label1_1.configure(activebackground="#f9f9f9")
         self.Label1_1.configure(anchor='w')
@@ -129,7 +129,7 @@ class Toplevel1:
         self.Label1_1.configure(highlightcolor="black")
         self.Label1_1.configure(text='''from Email:''')
         
-        self.Entry1_1 = tk.Entry(self.Frame1)
+        self.Entry1_1 = tk.Entry(self.f_Main)
         self.Entry1_1.place(relx=0.048, rely=0.176, height=30, relwidth=0.889)
         self.Entry1_1.configure(background="#191919")
         self.Entry1_1.configure(disabledforeground="#a3a3a3")
@@ -141,7 +141,7 @@ class Toplevel1:
         self.Entry1_1.configure(selectbackground="#c4c4c4")
         self.Entry1_1.configure(selectforeground="black")
         
-        self.Label1_1_1 = tk.Label(self.Frame1)
+        self.Label1_1_1 = tk.Label(self.f_Main)
         self.Label1_1_1.place(relx=0.048, rely=0.358, height=20, width=174)
         self.Label1_1_1.configure(activebackground="#f9f9f9")
         self.Label1_1_1.configure(anchor='w')
@@ -154,7 +154,7 @@ class Toplevel1:
         self.Label1_1_1.configure(highlightcolor="black")
         self.Label1_1_1.configure(text='''from Password:''')
         
-        self.Entry1_1_1 = tk.Entry(self.Frame1)
+        self.Entry1_1_1 = tk.Entry(self.f_Main)
         self.Entry1_1_1.place(relx=0.048, rely=0.487, height=30, relwidth=0.889)
         self.Entry1_1_1.configure(background="#191919")
         self.Entry1_1_1.configure(disabledforeground="#a3a3a3")
@@ -166,7 +166,7 @@ class Toplevel1:
         self.Entry1_1_1.configure(selectbackground="#c4c4c4")
         self.Entry1_1_1.configure(selectforeground="black")
         
-        self.Label1_1_2 = tk.Label(self.Frame1)
+        self.Label1_1_2 = tk.Label(self.f_Main)
         self.Label1_1_2.place(relx=0.048, rely=0.663, height=21, width=174)
         self.Label1_1_2.configure(activebackground="#f9f9f9")
         self.Label1_1_2.configure(anchor='w')
@@ -179,7 +179,7 @@ class Toplevel1:
         self.Label1_1_2.configure(highlightcolor="black")
         self.Label1_1_2.configure(text='''to Email:''')
 
-        self.Entry1_1_1_1 = tk.Entry(self.Frame1)
+        self.Entry1_1_1_1 = tk.Entry(self.f_Main)
         self.Entry1_1_1_1.place(relx=0.048, rely=0.798, height=30
                 , relwidth=0.889)
         self.Entry1_1_1_1.configure(background="#191919")
