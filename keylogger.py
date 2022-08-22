@@ -60,13 +60,15 @@ class Toplevel1:
         self.top = top
         self.selectedButton = tk.IntVar()
 
-        self.config_MenuBar()
-        self.config_Frame()
-        self.config_Email()
-        self.config_MainInputs()
-        self.config_RadioButtons()
-        self.config_PostWebServer()
-        self.config_File()
+        self.config_MenuBar() # menu bar
+        self.config_Topic() # topic
+        self.config_Frame() # main frame, has everything
+        self.config_MainInputs() # required inputs
+        self.config_RadioButtons() # radio buttons (select 1 option)
+        self.config_Email() # email config
+        self.config_PostWebServer() # post to web server config
+        self.config_File() # save to file config
+        self.config_Bottom() # log, build and clear log buttons
 
         _style_code()
         
