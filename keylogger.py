@@ -62,14 +62,7 @@ class Toplevel1:
 
         self.config_MenuBar()
 
-        self.Frame1 = tk.Frame(self.top)
-        self.Frame1.place(relx=0.015, rely=0.371, relheight=0.381
-                , relwidth=0.308)
-        self.Frame1.configure(relief='groove')
-        self.Frame1.configure(borderwidth="2")
-        self.Frame1.configure(relief="groove")
-        self.Frame1.configure(background="#1e1e1e")
-        self.Frame1.configure(cursor="fleur")
+        self.config_Frame()
 
         self.Label1_1 = tk.Label(self.Frame1)
         self.Label1_1.place(relx=0.048, rely=0.041, height=21, width=174)
@@ -535,6 +528,15 @@ class Toplevel1:
         self.sub_menu12.add_command(compound='left',label='About')
         self.sub_menu12.add_command(compound='left',label='Help') 
     
+    def config_Frame(self):
+        self.Frame1 = tk.Frame(self.top)
+        self.Frame1.place(relx=0.015, rely=0.371, relheight=0.381
+                , relwidth=0.308)
+        self.Frame1.configure(relief='groove')
+        self.Frame1.configure(borderwidth="2")
+        self.Frame1.configure(relief="groove")
+        self.Frame1.configure(background="#1e1e1e")
+        
 # The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
     '''Configure the scrollbars for a widget.'''
