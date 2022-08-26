@@ -53,7 +53,7 @@ class Toplevel1:
         top.geometry("672x507+583+374")
         top.minsize(120, 1)
         top.maxsize(4644, 1161)
-        top.resizable(1,  1)
+        top.resizable(0,  0)
         top.title("Keylogger v2 - by @hirushaadi")
         top.configure(background="#1e1e1e")
 
