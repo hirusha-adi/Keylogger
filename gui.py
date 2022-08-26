@@ -601,6 +601,20 @@ class Toplevel1:
             FromPassword = _get_Email['FromPassword']
             ToEmail = _get_Email['ToEmail']
             
+            if "@" not in FromEmail:
+                while True:
+                    temp = input("[?] Enter From Email >> ")
+                    if "@" in temp:
+                        FromEmail = temp
+                        break
+            
+            if "@" not in ToEmail:
+                while True:
+                    temp = input("[?] Enter To Email >> ")
+                    if "@" in temp:
+                        ToEmail = temp
+                        break
+            
         elif selected_ReportMode == 2: # save file
             _get_SaveFile = self.get_SaveFile()
             BaseFilename = _get_SaveFile['BaseFilename']
