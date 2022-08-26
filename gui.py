@@ -10,6 +10,7 @@ import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter.constants import *
 import os.path
+import platform
 
 _script = sys.argv[0]
 _location = os.path.dirname(_script)
@@ -643,7 +644,6 @@ class ScrolledText(AutoScroll, tk.Text):
         tk.Text.__init__(self, master, **kw)
         AutoScroll.__init__(self, master)
 
-import platform
 def _bound_to_mousewheel(event, widget):
     child = widget.winfo_children()[0]
     if platform.system() == 'Windows' or platform.system() == 'Darwin':
