@@ -14,8 +14,6 @@ import os.path
 _script = sys.argv[0]
 _location = os.path.dirname(_script)
 
-import gui_support
-
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
 _compcolor = 'gray40' # X11 color: #666666
@@ -690,7 +688,15 @@ def _on_shiftmouse(event, widget):
             widget.xview_scroll(1, 'units')
 
 def start_up():
-    gui_support.main()
+    '''Main entry point for the application.'''
+    global root
+    root = tk.Tk()
+    root.protocol( 'WM_DELETE_WINDOW' , root.destroy)
+    # Creates a toplevel widget.
+    global _top1, _w1
+    _top1 = root
+    _w1 = Toplevel1(_top1)
+    root.mainloop()
 
 if __name__ == '__main__':
     start_up()
