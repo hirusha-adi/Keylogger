@@ -1,3 +1,5 @@
+import os
+
 class Texts:
     TOPIC = """
 888  /                     888                /       /                                   /~~88b 
@@ -35,3 +37,14 @@ d888  888 d888   i 888  888 d888  88b
 Y888  888 Y888   ' 888  888 Y888    , 
  "88_/888  "88_-~  888  888  "88___/  
     """
+   
+class Generate:
+   class FileNames:
+      base = os.getcwd()
+      modules = os.path.join(base, "modules")
+      _1_imports = os.path.join(modules, "1.imports.py") 
+   def __init__(self) -> None:
+      pass
+   
+   def loadModules(self):
+      pass
