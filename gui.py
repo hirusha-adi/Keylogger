@@ -595,15 +595,23 @@ class Toplevel1:
         # Radio Button
         selected_ReportMode = self.selected_ReportMode.get()
         
-        if selected_ReportMode == 1:
-            # send email
-            pass
-        elif selected_ReportMode == 2:
-            # save file
-            pass
-        elif selected_ReportMode == 3:
-            # web post
-            pass
+        if selected_ReportMode == 1: # send email
+            _get_Email = self.get_Email()
+            FromEmail = _get_Email['FromEmail']
+            FromPassword = _get_Email['FromPassword']
+            ToEmail = _get_Email['ToEmail']
+            
+        elif selected_ReportMode == 2: # save file
+            _get_SaveFile = self.get_SaveFile()
+            BaseFilename = _get_SaveFile['BaseFilename']
+            FileExtension = _get_SaveFile['FileExtension']
+            SaveFileFormat = _get_SaveFile['SaveFileFormat']
+            
+        elif selected_ReportMode == 3: # web post
+            _get_PostWeb = self.get_PostWeb()
+            ParameterName = _get_PostWeb['ParameterName']
+            EndpointUrl = _get_PostWeb['EndpointUrl']
+            ExpectedResult = _get_PostWeb['ExpectedResult']
         
 # The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
