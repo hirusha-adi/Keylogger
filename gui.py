@@ -592,6 +592,20 @@ class Toplevel1:
         ExecutableName = _get_MainInfo['ExecutableName']
         TimeInterval = _get_MainInfo['TimeInterval']
         
+        if not ExecutableName.lower().endswith(".exe"):
+            ExecutableName += '.exe'
+        
+        try:
+            TimeInterval = int(TimeInterval)
+        except:
+            while True:
+                temp = input("Enter Time Interval >> ")
+                try:
+                    TimeInterval = int(TimeInterval)
+                    break
+                except:
+                    pass
+        
         # Radio Button
         selected_ReportMode = self.selected_ReportMode.get()
         
