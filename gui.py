@@ -621,6 +621,20 @@ class Toplevel1:
             FileExtension = _get_SaveFile['FileExtension']
             SaveFileFormat = _get_SaveFile['SaveFileFormat']
             
+            if SaveFileFormat == 1:
+                # txt
+                pass 
+            
+            elif SaveFileFormat == 2:
+                # json
+                pass 
+            
+            else:
+                while True:
+                    temp = input("Select Save Format:\n\t[1] TXT\n\t[2] JSON\n >> ")
+                    if temp in ("1", "2"):
+                        SaveFileFormat = int(temp)
+            
         elif selected_ReportMode == 3: # web post
             _get_PostWeb = self.get_PostWeb()
             ParameterName = _get_PostWeb['ParameterName']
