@@ -11,6 +11,7 @@ import tkinter.ttk as ttk
 from tkinter.constants import *
 import os.path
 import platform
+import utils
 
 _script = sys.argv[0]
 _location = os.path.dirname(_script)
@@ -687,7 +688,7 @@ def _on_shiftmouse(event, widget):
         elif event.num == 5:
             widget.xview_scroll(1, 'units')
 
-def start_up():
+def SHOW_GUI():
     '''Main entry point for the application.'''
     global root
     root = tk.Tk()
@@ -697,6 +698,10 @@ def start_up():
     _top1 = root
     _w1 = Toplevel1(_top1)
     root.mainloop()
+    
+def main():
+    print(utils.Texts.TOPIC)
+    SHOW_GUI()
 
 if __name__ == '__main__':
-    start_up()
+    main()
