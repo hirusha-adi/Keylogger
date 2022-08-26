@@ -14,7 +14,7 @@ import os.path
 _script = sys.argv[0]
 _location = os.path.dirname(_script)
 
-import keylogger_support
+import gui_support
 
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
@@ -690,8 +690,7 @@ def _on_shiftmouse(event, widget):
             widget.xview_scroll(1, 'units')
 
 def start_up():
-    keylogger_support.main()
+    gui_support.main()
 
 if __name__ == '__main__':
-    keylogger_support.main()
-
+    start_up()
