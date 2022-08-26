@@ -585,6 +585,26 @@ class Toplevel1:
         TimeInterval = self.e_TimeInterval.get()
         return { 'ExecutableName': ExecutableName, 'TimeInterval': TimeInterval }
 
+    def VALIDATE(self):
+        
+        # Main Info
+        _get_MainInfo = self.get_MainInfo()
+        ExecutableName = _get_MainInfo['ExecutableName']
+        TimeInterval = _get_MainInfo['TimeInterval']
+        
+        # Radio Button
+        selected_ReportMode = self.selected_ReportMode.get()
+        
+        if selected_ReportMode == 1:
+            # send email
+            pass
+        elif selected_ReportMode == 2:
+            # save file
+            pass
+        elif selected_ReportMode == 3:
+            # web post
+            pass
+        
 # The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
     '''Configure the scrollbars for a widget.'''
