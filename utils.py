@@ -7,6 +7,8 @@ class Texts:
 888   \  Y888    ,    Y    888 Y888   '  /       /      Y888    , 888             Y8/     d88P   
 888    \  "88___/    /     888  "88_-~  Cb      Cb       "88___/  888              Y     d88P___ 
                    _/                    Y8""8D  Y8""8D                                          
+                   
+                                        by @hirushaadi
     """
     
     SUCCESS = """
