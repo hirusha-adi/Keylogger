@@ -124,4 +124,16 @@ class Generate:
         else:
             with open(FileNames._3_file, "r", encoding='utf-8') as _file:
                 self._3_keylogger = _file.read()
-    
+
+        with open(FileNames._4_cipher, "r", encoding='utf-8') as _file:
+            self._4_cipher = _file.read()
+        
+        if self.mode == 1:
+            with open(FileNames._5_email, "r", encoding='utf-8') as _file:
+                self._5_start = _file.read()
+        elif self.mode == 3:
+            with open(FileNames._5_post, "r", encoding='utf-8') as _file:
+                self._5_start = _file.read()
+        else:
+            with open(FileNames._5_file, "r", encoding='utf-8') as _file:
+                self._5_start = _file.read()
