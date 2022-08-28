@@ -1,9 +1,0 @@
-[ENTER]
-file[ENTER]
-[ESC][ENTER]
-sdfs[ESC][ENTER]
-hirusha[ESC][ENTER]
-t
-
-hirusha
-
