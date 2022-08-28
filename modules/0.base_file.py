@@ -1,5 +1,5 @@
 import keyboard, os, subprocess, sys, shutil
-import smtplib, base64
+import base64
 from threading import Timer
 from datetime import datetime
 from getpass import getuser
