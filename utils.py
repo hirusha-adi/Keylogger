@@ -40,56 +40,61 @@ Y888  888 Y888   ' 888  888 Y888    ,
     """
 
 class Cipher:
-   def encrypt(plain_text, key=16):
-    encrypted = ""
-    for c in plain_text:
-        if c.isupper():
-            c_index = ord(c) - ord('A')
-            c_shifted = (c_index + key) % 26 + ord('A')
-            c_new = chr(c_shifted)
-            encrypted += c_new
-        elif c.islower():
-            c_index = ord(c) - ord('a') 
-            c_shifted = (c_index + key) % 26 + ord('a')
-            c_new = chr(c_shifted)
-            encrypted += c_new
-        elif c.isdigit():
-            c_new = (int(c) + key) % 10
-            encrypted += str(c_new)
-        else:
-            encrypted += c
-    encrypted = base64.b64encode(base64.b16encode(bytes(encrypted, encoding='utf-8')))
-    return encrypted
+    def encrypt(plain_text, key=16):
+        encrypted = ""
+        for c in plain_text:
+            if c.isupper():
+                c_index = ord(c) - ord('A')
+                c_shifted = (c_index + key) % 26 + ord('A')
+                c_new = chr(c_shifted)
+                encrypted += c_new
+            elif c.islower():
+                c_index = ord(c) - ord('a') 
+                c_shifted = (c_index + key) % 26 + ord('a')
+                c_new = chr(c_shifted)
+                encrypted += c_new
+            elif c.isdigit():
+                c_new = (int(c) + key) % 10
+                encrypted += str(c_new)
+            else:
+                encrypted += c
+        encrypted = base64.b64encode(base64.b32encode(bytes(encrypted, encoding='utf-8')))
+        return encrypted
 
-   def decrypt(ciphertext, key=16):
-    decrypted = ""
-    for c in ciphertext:
-        if c.isupper(): 
-            c_index = ord(c) - ord('A')
-            c_og_pos = (c_index - key) % 26 + ord('A')
-            c_og = chr(c_og_pos)
-            decrypted += c_og
-        elif c.islower(): 
-            c_index = ord(c) - ord('a') 
-            c_og_pos = (c_index - key) % 26 + ord('a')
-            c_og = chr(c_og_pos)
-            decrypted += c_og
-        elif c.isdigit():
-            c_og = (int(c) - key) % 10
-            decrypted += str(c_og)
-        else:
-            decrypted += c
-    encrypted = base64.b16decode(base64.b64decode(bytes(encrypted, encoding='utf-8')))
-    return decrypted
+    def decrypt(ciphertext, key=16):
+        decrypted = ""
+        print(ciphertext)
+        ciphertext = base64.b32decode(base64.b64decode(str(ciphertext, encoding='utf-8')))
+        print(ciphertext)
+        for c in ciphertext:
+            print(c)
+            if c.isupper(): 
+                c_index = ord(c) - ord('A')
+                c_og_pos = (c_index - key) % 26 + ord('A')
+                c_og = chr(c_og_pos)
+                decrypted += c_og
+            elif c.islower(): 
+                c_index = ord(c) - ord('a') 
+                c_og_pos = (c_index - key) % 26 + ord('a')
+                c_og = chr(c_og_pos)
+                decrypted += c_og
+            elif c.isdigit():
+                c_og = (int(c) - key) % 10
+                decrypted += str(c_og)
+            else:
+                decrypted += c
+        return decrypted
 
 class Generate:
-   class FileNames:
-      base = os.getcwd()
-      modules = os.path.join(base, "modules")
-      _1_imports = os.path.join(modules, "1.imports.py") 
-      
-   def __init__(self) -> None:
-      pass
-   
-   def loadModules(self):
-      pass
+    class FileNames:
+        base = os.getcwd()
+        modules = os.path.join(base, "modules")
+        _1_imports = os.path.join(modules, "1.imports.py") 
+        
+    def __init__(self) -> None:
+        pass
+    
+    def loadModules(self):
+        pass
+
+print(Cipher.decrypt(ciphertext=b'T1IzWE01RFhPUjNITzVEV081MkhNNTNXT1FGQVU2RFpOQlZXUzZEUkJJPT09PT09', key=16))
