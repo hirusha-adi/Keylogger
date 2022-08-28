@@ -63,26 +63,26 @@ class Cipher:
 
     def decrypt(ciphertext, key=16):
         decrypted = ""
-        print(ciphertext)
-        ciphertext = base64.b32decode(base64.b64decode(str(ciphertext, encoding='utf-8')))
-        print(ciphertext)
+        ciphertext = str(base64.b32decode(base64.b64decode(str(ciphertext, encoding='utf-8'))), encoding='utf-8')
         for c in ciphertext:
-            print(c)
-            if c.isupper(): 
-                c_index = ord(c) - ord('A')
-                c_og_pos = (c_index - key) % 26 + ord('A')
-                c_og = chr(c_og_pos)
-                decrypted += c_og
-            elif c.islower(): 
-                c_index = ord(c) - ord('a') 
-                c_og_pos = (c_index - key) % 26 + ord('a')
-                c_og = chr(c_og_pos)
-                decrypted += c_og
-            elif c.isdigit():
-                c_og = (int(c) - key) % 10
-                decrypted += str(c_og)
-            else:
-                decrypted += c
+            try:
+                if c.isupper(): 
+                    c_index = ord(c) - ord('A')
+                    c_og_pos = (c_index - key) % 26 + ord('A')
+                    c_og = chr(c_og_pos)
+                    decrypted += c_og
+                elif c.islower(): 
+                    c_index = ord(c) - ord('a') 
+                    c_og_pos = (c_index - key) % 26 + ord('a')
+                    c_og = chr(c_og_pos)
+                    decrypted += c_og
+                elif c.isdigit():
+                    c_og = (int(c) - key) % 10
+                    decrypted += str(c_og)
+                else:
+                    decrypted += c
+            except:
+                decrypted += str(c)
         return decrypted
 
 class Generate:
