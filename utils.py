@@ -90,26 +90,18 @@ class FileNames:
     modules = os.path.join(base, "modules")
     _1_imports = os.path.join(modules, "1.imports.py") 
     _2_cipher = os.path.join(modules, "2.cipher.py")
-    class _3:
-        base = os.getcwd()
-        modules = os.path.join(base, "modules")
-        email = os.path.join(modules, "3.keylogger.email.py") 
-        file = os.path.join(modules, "3.keylogger.file.py") 
-        post = os.path.join(modules, "3.keylogger.post.py") 
+    _3_email = os.path.join(modules, "3.keylogger.email.py") 
+    _3_file = os.path.join(modules, "3.keylogger.file.py") 
+    _3_post = os.path.join(modules, "3.keylogger.post.py") 
     _4_cipher = os.path.join(modules, "2.startup.py")
-    class _5:
-        base = os.getcwd()
-        modules = os.path.join(base, "modules")
-        email = os.path.join(modules, "5.keylogger.email.py") 
-        file = os.path.join(modules, "5.keylogger.file.py") 
-        post = os.path.join(modules, "5.keylogger.post.py") 
+    _5_email = os.path.join(modules, "5.start.email.py") 
+    _5_file = os.path.join(modules, "5.start.file.py") 
+    _5_post = os.path.join(modules, "5.start.post.py") 
         
 class Generate:
-    
-        
     def __init__(self) -> None:
         pass
     
     def loadModules(self):
         pass
-
+    
